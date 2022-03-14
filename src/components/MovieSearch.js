@@ -1,18 +1,30 @@
+import SearchBox from "./SearchBox";
+import Results from "./Results";
+import config from "../config";
+import { useState } from "react";
+
 const MovieSearch = () => {
+  const [movieItems, updateMovieItems] = useState([]);
+  const [movieSearchDone, updateMovieSearchDone] = useState(false);
+  const onClickSearchMovie = (searchText) => {
+    if (searchText == "") {
+      updateMovieItems([]);
+      updateMovieSearchDone(false);
+      return;
+    }
+    const url = `http://www.omdbapi.com?apikey=${config.OMDB_API_KEY}&s=${searchText}`;
+    fetch(url)
+      .then((responseObj) => responseObj.json())
+      .then((data) => {
+        updateMovieItems(data.Search);
+        updateMovieSearchDone(true);
+      });
+  };
   return (
-    <div className="input-group p-5">
-      <span className="input-group-text bg-white wd-border-top-left-rounded-pill wd-border-bottom-left-rounded-pill border-end-0">
-        <label
-          className="fa-solid fa-magnifying-glass text-muted"
-          htmlFor="searchMovie"
-        ></label>
-      </span>
-      <input
-        type="text"
-        id="searchMovie"
-        className="shadow-none form-control wd-border-top-right-rounded-pill wd-border-bottom-right-rounded-pill border-start-0"
-        placeholder="Search Movies"
-      />
+    <div>
+      <h1 className="display-1 text-center">Movie Search</h1>
+      <SearchBox searchMovie={onClickSearchMovie} />
+      <Results movieResults={movieItems} movieSearchStatus={movieSearchDone} />
     </div>
   );
 };

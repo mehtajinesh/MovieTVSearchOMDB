@@ -1,10 +1,8 @@
-import logo from './logo.svg';
-import './App.css';
-import MovieSearch from './components/MovieSearch'
+import "./App.css";
+import MovieSearch from "./components/MovieSearch";
+
 function App() {
-  return (
-      <MovieSearch/>
-  );
+  return <MovieSearch />;
 }
 
 export default App;
