@@ -7,7 +7,7 @@ const MovieSearch = () => {
   const [movieItems, updateMovieItems] = useState([]);
   const [movieSearchDone, updateMovieSearchDone] = useState(false);
   const onClickSearchMovie = (searchText) => {
-    if (searchText == "") {
+    if (searchText === "") {
       updateMovieItems([]);
       updateMovieSearchDone(false);
       return;

@@ -3,7 +3,11 @@ const MovieResultItem = ({ movie }) => {
     <div className="list-group-item p-2">
       <div className="row">
         <div className="col-1">
-          <img className="img-thumbnail" src={movie.Poster}></img>
+          <img
+            className="img-thumbnail"
+            src={movie.Poster}
+            alt="movie poster"
+          />
         </div>
         <div className="col">
           <div className="row">

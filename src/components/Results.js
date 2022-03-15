@@ -11,7 +11,7 @@ const Results = ({ movieResults, movieSearchStatus }) => {
       <div className="list-group">
         {console.log(movieResults)}
         {movieResults.map((movie) => {
-          return <MovieResultItem movie={movie} />;
+          <MovieResultItem movie={movie} />;
         })}
       </div>
     </div>
