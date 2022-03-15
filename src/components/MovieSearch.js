@@ -12,7 +12,7 @@ const MovieSearch = () => {
       updateMovieSearchDone(false);
       return;
     }
-    const url = `http://www.omdbapi.com?apikey=${config.OMDB_API_KEY}&s=${searchText}`;
+    const url = `https://www.omdbapi.com?apikey=${config.OMDB_API_KEY}&s=${searchText}`;
     fetch(url)
       .then((responseObj) => responseObj.json())
       .then((data) => {
